@@ -60,11 +60,11 @@ public class ArabamAppTest {
 
         // 2- uygulamanin basarili bir sekilde acildigi dogrulanir
         Assert.assertTrue(driver.findElementByAccessibilityId("İlan Ver").isDisplayed());
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         // 3- alt menuden ilan ara butonuna tiklanir
         driver.findElementById("com.dogan.arabam:id/action_vehicle_search").click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         // 4- kategori olarak otomobil secilir
         driver.findElementByXPath("//*[@text='Otomobil']").click();
@@ -72,6 +72,7 @@ public class ArabamAppTest {
 
         // 5- arac olarak volvo secilir
         TouchAction action = new TouchAction<>(driver);
+        Thread.sleep(2000);
         action
                 .press(PointOption.point(537,1600)) // ekranda kaydirma islemini baslatmak icin belirledigimiz ilk baslangic noktasi
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(100)))
@@ -88,6 +89,7 @@ public class ArabamAppTest {
 
         // 6- arac markasi olarak V90 Cross Country secilir
         TouchAction action2 = new TouchAction<>(driver);
+        Thread.sleep(2000);
         action
                 .press(PointOption.point(541,1556))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
@@ -104,18 +106,22 @@ public class ArabamAppTest {
 
         // 8- Paket secimi yapilir
         driver.findElementByXPath("//*[@text='Plus Bright']").click();
+        Thread.sleep(1000);
 
         // 9- Ucuzdan pahaliya siralama yaparak filtreleme yapilir
         driver.findElementByXPath("//*[@text='Sıralama']").click();
         Thread.sleep(1000);
 
         driver.findElementByXPath("//*[@text='Fiyat - Ucuzdan Pahalıya']").click();
-        Thread.sleep(1000);
-
+        Thread.sleep(2000);
 
         // 10- gelen en ucuz arabanin 500.000 tl'den buyuk oldugu dogrulanir
-       String enUcuzAracFiyati= driver.findElementByXPath("//*[@resource-id='com.dogan.arabam:id/clItemAdvertList']").getText();
+        String enUcuzAracFiyati = driver.findElementByXPath("//*[@resource-id='com.dogan.arabam:id/tvPrice']").getText();
+        System.out.println(enUcuzAracFiyati); // Örn: 3.775.000 TL
 
+        enUcuzAracFiyati= enUcuzAracFiyati.replaceAll("\\D","");
+        System.out.println(enUcuzAracFiyati); //3775000
 
+        Assert.assertTrue(Integer.parseInt(enUcuzAracFiyati ) > 50000);
     }
 }
