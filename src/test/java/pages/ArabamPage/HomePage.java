@@ -12,10 +12,8 @@ public class HomePage {
         this.driver = driver;
     }
 
-    // "İlan Ver" butonunu bulan fonksiyon
     public AndroidElement ilanVerButton() {
         return driver.findElementByAccessibilityId("İlan Ver");
-       // return driver.findElement(By.accessibilityId("İlan Ver"));
     }
 
     // "İlan Ver" butonuna tıklama fonksiyonu

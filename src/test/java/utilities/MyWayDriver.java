@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MyWayDriver {
 
-    private static AndroidDriver<AndroidElement> driver;
+    public static AndroidDriver<AndroidElement> driver;
 
     // Dinamik olarak driver'ı oluşturmak için
     public static AndroidDriver<AndroidElement> getAndroidDriver(String appPackage, String appActivity) throws MalformedURLException {

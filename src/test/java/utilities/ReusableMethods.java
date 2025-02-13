@@ -5,9 +5,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,6 @@ public class ReusableMethods {
                 .release()
                 .perform();
     }
-
 
     public static void scrollWithUiScrollableAndClick(String elementText) {
         AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
@@ -53,10 +52,10 @@ public class ReusableMethods {
         return target;
     }
 
-
-
-
-
-
+    public static void clickElement(WebDriver driver, WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        clickableElement.click();
+    }
 }
 
