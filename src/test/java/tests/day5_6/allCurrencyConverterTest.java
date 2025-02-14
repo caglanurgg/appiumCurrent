@@ -12,14 +12,14 @@ import java.io.IOException;
 
 public class allCurrencyConverterTest {
 
+    AndroidDriver<AndroidElement> driver = Driver.getAndroidDriver();
+    // bu satirla esitligin sagini sola atadim
+    // Driver icerisindeki 24-63 satir araligini calistirmis oldum
+
+    AllCurrencyPage currencyPage = new AllCurrencyPage();
+
     @Test
     public void testAllCurrencyApp() throws InterruptedException, IOException {
-
-        AndroidDriver<AndroidElement> driver = Driver.getAndroidDriver();
-        // bu satirla esitligin sagini sola atadim
-        // Driver icerisindeki 24-63 satir araligini calistirmis oldum
-
-        AllCurrencyPage currencyPage = new AllCurrencyPage();
 
         // 1- all  currency uygulamasinin yuklendigi dogrulanir
         Assert.assertTrue(driver.isAppInstalled("com.smartwho.SmartAllCurrencyConverter"));
