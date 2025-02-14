@@ -28,8 +28,8 @@ public class KiwiAppTest {
         kiwipage.getMisafirButonu().click();
 
         // 3- ardindan gelecek olan 3 adimda yesil butona basilarak devam edilir
+        Thread.sleep(2000);
         TouchAction action = new TouchAction<>(driver);
-
         for (int i = 0; i < 3; i++) {
         ReusableMethods.koordinatTiklamaMethodu(515,1688,1000);
          }
@@ -49,31 +49,37 @@ public class KiwiAppTest {
         driver.getKeyboard().pressKey("Ivalo");
         } else {
         kiwipage.departurePoint.sendKeys("Ivalo");
-         }
+        }
+        Thread.sleep(1000);
 
-        ReusableMethods.koordinatTiklamaMethodu(354,289,1000);
-        kiwipage.chooseButoon.click();
+        ReusableMethods.koordinatTiklamaMethodu(303,267,2000);
+        kiwipage.getChooseButoon().click();
 
         // 7- varis ulkesi secenegine tiklanir ve gidilecek ulke girilir
+        ReusableMethods.koordinatTiklamaMethodu(311,921,1000);
+        driver.getKeyboard().pressKey("Istanbul");
+        Thread.sleep(1000);
 
+        ReusableMethods.koordinatTiklamaMethodu(274,278,1000);
+        kiwipage.getChooseButoon().click();
 
-
-        // 8- gidis tarihi eylul ayinin 21 i olarak secilir ve set date e tiklanir
-
+        // 8- gidis tarihi subat ayinin 22 si olarak secilir ve set date e tiklanir
+        ReusableMethods.koordinatTiklamaMethodu(409,1052,1000);
+        ReusableMethods.koordinatTiklamaMethodu(964,1154,1000);
+        kiwipage.setDateButton.click();
 
         // 9- search butonuna tiklanir
+        kiwipage.searchButton.click();
 
+        // 10- cheapest ve up to 1 stop filtrelemeleri yapilir
+        ReusableMethods.koordinatTiklamaMethodu(278,259,2000);
+        ReusableMethods.koordinatTiklamaMethodu(292,555,1000);
 
-        // 10- en ucuz ve aktarmasiz filtrelemeleri yapilir
-
+        ReusableMethods.koordinatTiklamaMethodu(515,248,1000);
+        ReusableMethods.koordinatTiklamaMethodu(237,1578,2000);
 
         // 11- gelen bilet fiyati kaydedilir ve kullanicinin telefonuna sms olarak gonderilir
-
-
-
-
-
-
-
+        String cheapestTicketText = kiwipage.cheapestTicket.getText();
+        driver.sendSMS("555555555555","Kiwi uygulamasindaki en ucuz bilet fiyati :" + cheapestTicketText);
 }
 }

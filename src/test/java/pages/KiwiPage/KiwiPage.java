@@ -18,12 +18,22 @@ public class KiwiPage {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@text='Continue as a guest']")));
     }
 
-    @FindBy (xpath = "//*[@class()='android.widget.EditText']")
+    public WebElement getChooseButoon() {
+        WebDriverWait wait = new WebDriverWait(Driver.getAndroidDriver(), 10);
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@text='Choose']")));
+    }
+
+    @FindBy (xpath = "//*[@class='android.widget.EditText']")
     public WebElement departurePoint;
 
-    @FindBy (xpath = "//*[@text()='Choose']")
-    public WebElement chooseButoon;
 
+    @FindBy (xpath = "//*[@text='Set date']")
+    public WebElement setDateButton;
 
+    @FindBy (xpath = "//*[@text='Search'][1]")
+    public WebElement searchButton;
+
+    @FindBy (xpath = "(//*[@class='android.widget.TextView'])[12]")
+    public WebElement cheapestTicket;
 
 }
