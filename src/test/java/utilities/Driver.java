@@ -36,8 +36,10 @@ public class Driver {
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, ANDROIDVERSION);
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, OTOMASYON_ISMI);
-            caps.setCapability("appPackage", ConfigReader.getProperty("kiwiKimlik"));
-            caps.setCapability("appActivity", ConfigReader.getProperty("appActivity"));
+            caps.setCapability("appPackage", ConfigReader.getProperty("com.smartwho.SmartAllCurrencyConverter"));
+            caps.setCapability("appActivity", ConfigReader.getProperty("com.smartwho.SmartAllCurrencyConverter.CurrencyConverter"));
+           // caps.setCapability("appPackage", ConfigReader.getProperty("kiwiKimlik"));
+           // caps.setCapability("appActivity", ConfigReader.getProperty("appActivity"));
             caps.setCapability(MobileCapabilityType.NO_RESET,false);
             /* eger bu capability FALSE olarak kullanilirsa,uygulama test edildikten sonra her seferinde kullanici datalari temizlenir ve
             uygulamanin ilk install haline dondurulur
